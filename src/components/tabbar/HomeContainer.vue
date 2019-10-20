@@ -6,18 +6,30 @@
             <!-- <mt-swipe-item v-for="item in lunbotuList" :key="item.url">
                 <img :src="item.img" alt="">
             </mt-swipe-item> -->
-            <mt-swipe-item></mt-swipe-item>
-            <mt-swipe-item></mt-swipe-item>
-            <mt-swipe-item></mt-swipe-item>
+            <mt-swipe-item>
+                <img src="http://img4.imgtn.bdimg.com/it/u=1239342993,1766155915&fm=11&gp=0.jpg" alt="">
+            </mt-swipe-item>
+            <mt-swipe-item>
+                <img src="http://img3.imgtn.bdimg.com/it/u=4263349545,985435528&fm=26&gp=0.jpg" alt="">
+            </mt-swipe-item>
+            <mt-swipe-item>
+                <img src="http://img4.imgtn.bdimg.com/it/u=1886160216,3205352834&fm=26&gp=0.jpg" alt="">
+            </mt-swipe-item>
+            <mt-swipe-item>
+                <img src="http://img2.imgtn.bdimg.com/it/u=544206800,1861269762&fm=26&gp=0.jpg" alt="">
+            </mt-swipe-item>
+            <mt-swipe-item>
+                <img src="http://img5.imgtn.bdimg.com/it/u=2709011329,1001196856&fm=11&gp=0.jpg" alt="">
+            </mt-swipe-item>
         </mt-swipe>
 
         <!-- 九宫格 到 六宫格 的改造工程 -->
          <ul class="mui-table-view mui-grid-view mui-grid-9">
 		    <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-                <a href="#">
+                <router-link to="/home/newslist">
 		        <img src="../../images/menu1.png" alt="">
 		         <div class="mui-media-body">新闻资讯</div>
-                </a>
+                </router-link>
             </li>
 		    <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
                 <a href="#">
@@ -86,14 +98,9 @@
         height: 200px;
     }
     .mint-swipe-item{
-        &:nth-child(1){
-            background-image: url("../img/美食4.jpg")
-        }
-        &:nth-child(2){
-            background-image: url("../img/美食8.jpg");
-        }
-        &:nth-child(3){
-            background-image: url("../img/美食9.jpg");
+        img{
+            width: 100%;
+            height: 100%;
         }
     }
    .mui-grid-view.mui-grid-9{
