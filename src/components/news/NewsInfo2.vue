@@ -19,9 +19,17 @@
           <p>其他配置方面，i9-9980HK搭配的是RTX 2080显卡、64GB DDR4-2666内存、512GB PCIe SSD、1TB SSD、17.3寸4K屏。</p>
           <img src="http://www.ityears.com/d/file/2019/0424/1556069856553.png" alt="">
        </div> 
+         <comment-box></comment-box>
     </div>
 </template>
 <script>
+// 导入 评论子组件
+import comment from '../subcomponents/comment.vue'
+export default{
+    components:{ // 用来注册子组件的节点
+        'comment-box':comment
+    }
+}
 </script>
 <style lang="scss" scoped>
     .newsinfo-container{

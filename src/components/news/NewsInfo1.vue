@@ -15,9 +15,17 @@
            <h5>荣耀MagicBook Pro</h5>
 　　       <p> 另外，荣耀MagicBook Pro还拥有无界全面屏、轻薄大屏机身、高性能和游戏级散热降噪马达等多个主打亮点。这款笔记本将        与荣耀9X系列、荣耀手环5等一系列荣耀新品一同在西安发布，7月23日开启订金预定，7月29日正式首销。</p>
        </div> 
+         <comment-box></comment-box>
     </div>
 </template>
 <script>
+// 导入 评论子组件
+import comment from '../subcomponents/comment.vue'
+export default{
+    components:{ // 用来注册子组件的节点
+        'comment-box':comment
+    }
+}
 </script>
 <style lang="scss" scoped>
     .newsinfo-container{
@@ -43,4 +51,4 @@
             }
         }
     }
-</style>style
+</style>

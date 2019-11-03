@@ -14,8 +14,8 @@
     <div class="cmt-container">
         <h3>发表评论</h3>
         <hr>
-        <textarea placeholder="请输入评论内容（最多吐槽120字）" maxlength="120"></textarea>
-        <mt-button type="primary" size="large">发表评论</mt-button>
+        <textarea placeholder="请输入评论内容（最多吐槽120字）" maxlength="120" v-model = "msg"></textarea>
+        <mt-button type="primary" size="large" @click = "postComment">发表评论</mt-button>
         <ul class="mui-table-view">
                 <li class="mui-table-view-cell mui-media" v-for=" item in List " :key=" item.id ">
 					<a href="javascript:;">
@@ -35,9 +35,15 @@ import { Toast } from 'mint-ui'
 export default{
     data() {
         return {
+             msg:'',
+            //  comments:[],
              List:[
                  {id:1, img:'http://img5.imgtn.bdimg.com/it/u=3375420028,3970488305&fm=26&gp=0.jpg', title:'迷@我漫', content:'哎，又想换新的了'},
-                
+                 {id:2, img:'http://img1.imgtn.bdimg.com/it/u=3161173044,2244678317&fm=26&gp=0.jpg', title:'心&新', content:'表示，看得起，买不起。'},
+                  {id:3, img:'http://img3.imgtn.bdimg.com/it/u=575482484,3110667457&fm=26&gp=0.jpg', title:'你愁啥', content:'不管咋样，期待。。。'},
+                  {id:4, img:'http://img0.imgtn.bdimg.com/it/u=3854164330,3005590920&fm=26&gp=0.jpg', title:'我是一个平凡人', content:'这个，到时候，可以去体验店体验一下吧'},
+                  {id:5, img:'http://img5.imgtn.bdimg.com/it/u=1715333485,2556360718&fm=26&gp=0.jpg', title:'天知道', content:'当然，我也有这个想法，不管咋样，先看看再说'},
+                  {id:6, img:"http://img5.imgtn.bdimg.com/it/u=4248235115,2201748940&fm=26&gp=0.jpg", title:"@匿名人士", content:"好高科技呀！坐等ing"}
                  ],
              moreList:[
                   {id:1, img:'http://img5.imgtn.bdimg.com/it/u=3375420028,3970488305&fm=26&gp=0.jpg', title:'迷@我漫', content:'哎，又想换新的了'},
@@ -51,6 +57,7 @@ export default{
                   {id:9, img:"http://img5.imgtn.bdimg.com/it/u=2884107401,3797902000&fm=26&gp=0.jpg", title:"哈哈", content:"估计快了，我也想体验一下"},
                   {id:10, img:"http://img3.imgtn.bdimg.com/it/u=3864086826,2415830551&fm=26&gp=0.jpg", title:"我家的二哈", content:"我等~~~"}
                  ]
+               
         }
     },
     methods: {
@@ -66,13 +73,32 @@ export default{
             //     }
             // });
             
+    },
+    postComment(){
+        if(this.msg.trim().length === 0){
+                Toast('评论内容不能为空')
+            }else{
+                var cmt ={
+                    id:12,
+                    img:'http://img5.imgtn.bdimg.com/it/u=3093931288,1631874677&fm=26&gp=0.jpg',
+                    title: '唐猫-庭',
+                    content: this.msg.trim()
+
+                }
+                // this.List.unshift(cmt);
+                this.moreList.unshift(cmt);
+                this.msg = "";
+            }
+        }
     }
 }
 // import { Toast } from 'mint-ui'
 // export default {
 //     data() {
 //         return {
-//             pageIndex:1
+//            pageIndex:1, // 默认展开第一页数据
+//            comments:[], //所有的评论数据
+//            msg:'' // 评论输入的内容
 //         };
 //     },
 //     created() {
@@ -91,15 +117,38 @@ export default{
 //                 }
 //             });
 //         },
-//             getMore(){
+//          getMore(){
 //                 // 加载更多
 //                 this.pageIndex ++;
 //                 this.getComments();
+//            },
+//       postComment(){
+//             if(this.msg.trim().length === 0){
+//                 Toast('评论内容不能为空')；
 //             }
+//             发表评论
+//             参数1：请求的URL地址
+//             参数2：提交给服务器的数据对象 { content：this.msg }
+//             // 参数3：定义提交时候，表单中数据的格式 { emulateJSON:true }
+//             this.$http.post("api/postcomment/" + this.$route.params.id,{
+//                 content: this.msg.trim()
+//             }).then(function(result){
+//                 if(result.body.status === 0){
+//                     // 1. 拼接出一个评论对象
+//                     var cmt = {
+//                         user_name: "匿名用户",
+//                         add_time:Date.now(),
+//                         content:this.msg.trim()
+//                     };
+//                     this.comments.unshift(cmt);
+//                     this.msg = "";
+//                 }
+//             })
+// }
 //     },
 //     props: ["id"]
 // }
-}
+//  }
 </script>
 <style lang="scss" scoped>
     .cmt-container{

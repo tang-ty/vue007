@@ -21,9 +21,17 @@
           <h5>笔记本电脑厂商</h5>
           <p>另外按照AMD的说法，宏碁、华硕、戴尔、惠普、华为、联想、三星等都正在或即将推出基于第二代锐龙3000系列移动版的笔记本产品。</p>
        </div> 
+         <comment-box></comment-box>
     </div>
 </template>
 <script>
+// 导入 评论子组件
+import comment from '../subcomponents/comment.vue'
+export default{
+    components:{ // 用来注册子组件的节点
+        'comment-box':comment
+    }
+}
 </script>
 <style lang="scss" scoped>
     .newsinfo-container{
